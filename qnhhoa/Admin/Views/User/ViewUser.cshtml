@@ -1,0 +1,103 @@
+﻿@{
+    ViewData["Title"] = "Update User";
+}
+@model User
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update User</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/theme.css" rel="stylesheet" />
+    <link href="~/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
+<body>
+    <div class="wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="module span10 offset1">
+                        <form class="form-vertical" action="/User/UpdateUser" method="post">
+                            <div class="module-head">
+                                <h3>Update User</h3>
+                            </div>
+                            <div class="module-option clearfix">
+                                <div class="media-body">
+                                    <table cellpadding="5" style="width: 100%">
+                                        <tr>
+                                            <td for="username" width="10%">Username</td>
+                                            <td width="100%">
+                                                <input type="text" class="span3" name="Username" value="@Model.Username">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="10%">Fullname </td>
+                                            <td width="50%">
+                                                <div class="input-append">
+                                                    <input type="text" class="span3" name="Hoten" value="@Model.Hoten">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="10%">Pass</td>
+                                            <td width="100%">
+                                                <input type="text" class="span3" name="Pass" value="@Model.Password">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="20%">Phone number</td>
+                                            <td width="100%">
+                                                <div class="input-prepend">
+                                                    <input class="span3" type="text" name="SDT" value="@Model.SDT">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="10%">Address</td>
+                                            <td width="100%">
+                                                <div class="input-prepend">
+                                                    <input class="span5" type="text" name="Diachi" value="@Model.Diachi">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Role</td>
+                                            <td>
+                                                <select name="Role" class="span1" style="margin-top: 10px; padding: 3px;" value="@Model.Role">
+                                                    <option value="@Model.Role" disabled>@Model.Role</option>
+                                                    <option>0</option>
+                                                    <option>1</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="10%">Email</td>
+                                            <td width="100%">
+                                                <input type="text" class="span3" name="Email" value="@Model.Email">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td width="10%">Picture</td>
+                                                <td width="100%">
+                                                    <input type="file" name="Picture">
+                                                    <img src="@Model.Picture" alt="" width="25%">
+                                                </td>
+                                        </tr>
+                                    </table>
+                                    <center>
+                                        <input type="submit" class="btn btn-success" value="Update" style="margin-top: 10px;"> &nbsp;
+                                        <a asp-area="" asp-controller="User" asp-action="Index" class="btn btn-info" style="margin-top: 10px;">Back</a>
+                                    </center>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

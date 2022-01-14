@@ -1,0 +1,97 @@
+﻿@model Skin
+@{
+    ViewBag.Title = "View Skin";
+}
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/theme.css" rel="stylesheet" />
+    <link href="~/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="module span10 offset1">
+                    <form class="form-vertical" action="/Skin/UpdateSkin" method="post">
+                        <div class="module-head">
+                            <h3>Update SkinCare Product</h3>
+                        </div>
+                        <div class="module-option clearfix">
+                            <div class="media-body">
+                                <table cellpadding="3" style="width: 100%">
+                                    <tr>
+                                        <td width="10%">Product ID </td>
+                                        <td width="100%">
+                                            <input type="text" name="ID" class="span3" value="@Model.ID">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10%">Product Name </td>
+                                        <td width="100%">
+                                            <input type="text" name="Tensp" class="span3" value="@Model.Tensp">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10%">Brand</td>
+                                        <td width="100%">
+                                            <input type="text" name="Mabrand" class="span3" value="@Model.Mabrand">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10%">Product type</td>
+                                        <td width="100%">
+                                            <input type="text" name="Loaisp" class="span2" value="@Model.Loaisp">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10%">Quantity</td>
+                                        <td width="100%">
+                                            <div class="input-prepend">
+                                                <input class="span2" name="Qty" type="text" value="@Model.Qty">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10%">Cost</td>
+                                        <td width="100%">
+                                            <div class="input-prepend">
+                                                <input class="span2" name="Cost" type="text" value="@Model.Cost">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10%">Description</td>
+                                        <td width="100%">
+                                            <input type="text" name="Description" class="span8" value="@Model.Description">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10%">Photo</td>
+                                        <td width="100%">
+                                            <input type="text" name="Photo" class="span3" value="@Model.Photo">
+                                            <img src="@Model.Photomain" alt="" width="25%" />
+                                        </td>
+                                    </tr>
+                                </table>
+                                <center>
+                                    <input type="submit" class="btn btn-success" value="Update" style="margin-top: 10px;"> &nbsp;
+                                    <a asp-area="" asp-controller="Skin" asp-action="Index" class="btn btn-info" style="margin-top: 10px;">Back</a>
+                                </center>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

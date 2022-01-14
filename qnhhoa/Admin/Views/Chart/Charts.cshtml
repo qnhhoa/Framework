@@ -1,0 +1,120 @@
+﻿<head>
+    <title>Flowchart</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js'></script>
+</head>
+
+<body>
+    <div class="page-content page-container" id="page-content">
+        <div class="padding">
+            <div class="row">
+                <div class="container-fluid d-flex justify-content-center">
+                    <div class="col-sm-8 col-md-6">
+                        <div class="card">
+                            <div class="card-header"></div>
+                            <div class="card-body" style="height: 420px">
+                                <div class="chartjs-size-monitor"
+                                     style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+                                    <div class="chartjs-size-monitor-expand"
+                                         style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                        <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0">
+                                        </div>
+                                    </div>
+                                    <div class="chartjs-size-monitor-shrink"
+                                         style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                        <div style="position:absolute;width:200%;height:200%;left:0; top:0">
+                                        </div>
+                                    </div>
+                                </div> <canvas id="chart-line" width="299" height="200" class="chartjs-render-monitor"
+                                               style="display: block; width: 299px; height: 200px;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-5" style="
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                            ">
+                        <canvas id="pieChart" style="max-width: 500px;"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        var url = window.location;
+    var APIURL = url.protocol + "//" + url.hostname + ":"+url.port;
+        const URLAPI = {
+            getCharts: "/getCharts"
+        }
+        const getApi = async () => {
+            console.log(APIURL+URLAPI.getCharts);
+            return await fetch(APIURL+URLAPI.getCharts);
+        }
+        const renderCircle = async () => {
+            var data = await getApi();
+            var result = await data.json();
+            var circles = result.circles;
+            var ctxP = document.getElementById("pieChart").getContext('2d');
+            var myPieChart = new Chart(ctxP, {
+                type: 'pie',
+                data: {
+                    labels: circles.map(e => e.month),
+                    datasets: [{
+                        data: circles.map(e => e.tong),
+                        backgroundColor: ["#007bff"],
+                        hoverBackgroundColor: ["#007Aff"]
+                    }]
+                },
+                options: {
+                    responsive: true
+                }
+            });
+        }
+        renderCircle();
+        const render = async () => {
+
+            var data = await getApi();
+            var result = await data.json();
+            var bars = result.bars;
+            console.log(bars)
+            var ctx = $("#chart-line");
+            var myLineChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: bars.map(e => e.ngay),
+                    datasets: [{
+                        data: bars.map(e => e.spID),
+                        label: "Number of ",
+                        borderColor: "#458af7",
+                        backgroundColor: '#458af7',
+                        fill: false
+                    }, {
+                        data: bars.map(e => e.rt),
+                        label: "Rating",
+                        borderColor: "#8e5ea2",
+                        fill: true,
+                        backgroundColor: '#8e5ea2'
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: ''
+                    }
+                }
+            });
+        }
+        render();
+    </script>
+</body>
+
+</html>

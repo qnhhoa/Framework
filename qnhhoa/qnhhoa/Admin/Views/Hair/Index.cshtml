@@ -1,0 +1,175 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hair </title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/theme.css" rel="stylesheet" />
+    <link href="~/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
+<body>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                    <i class="icon-reorder shaded"></i>
+                </a><a class="brand" href="Home.html">Hair Care</a>
+                <div class="nav-collapse collapse navbar-inverse-collapse">
+                    <ul class="nav pull-right">
+                        <li class="nav-user dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Account &ensp; <i class="fa fa-user" class="nav-avatar"></i>
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Information</a></li>
+                                <li><a asp-area="" asp-controller="Login" asp-action="Index"> &ensp; Logout</a>
+                                </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="span3">
+                    <div class="sidebar">
+                        <ul class="widget widget-menu unstyled">
+                            <li class="active">
+                                <a href="Home.html"><i class="fas fa-ellipsis-h"></i> &ensp; Dashboard</a>
+                            </li>
+                            <li>
+                                <a class="fas fa-dolly" asp-area="" asp-controller="Order" asp-action="Index"> &ensp; Order Management</a>
+                            </li>
+                            <li>
+                                <a class="fas fa-user" asp-area="" asp-controller="User" asp-action="Index"> &ensp; User Management</a>
+                            </li>
+                            <li>
+                                <a class="fas fa-pager" asp-area="" asp-controller="Brands" asp-action="Index"> &ensp; Brand Management</a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#sp">
+                                    <i class="fas fa-bars"></i>&ensp; Product Management
+                                </a>
+                                <ul id="sp" class="collapse unstyled">
+                                    <li><a asp-area="" asp-controller="Hair" asp-action="Index"> &ensp; Hair care</a></li>
+                                    <li><a asp-area="" asp-controller="Makeup" asp-action="Index"> &ensp; Makeup</a></li>
+                                    <li><a asp-area="" asp-controller="Skin" asp-action="Index"> &ensp; Skin care</a></li>
+                                    <li><a asp-area="" asp-controller="Body" asp-action="Index"> &ensp; Body care</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="span9">
+                    <div class="content">
+                        <div class="module">
+                            <div class="module-head">
+                                <h3>Details</h3>
+                            </div>
+                            <table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered display" width="100%">
+                                <div class="module-option clearfix">
+                                    <form>
+                                        <div class="input-append pull-left">
+                                            <input type="text" class="span3" placeholder="Search here">
+                                            <button type="submit" class="btn">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                            <br>
+                                            <br>
+                                            <input type="text" class="span1" placeholder="Products">
+                                        </div>
+                                        <div class="input-append pull-right">
+                                            <a class="btn btn-success" asp-area="" asp-controller="Hair" asp-action="addhair" type="submit">Add +</a>
+                                            <br>
+                                            <br>
+                                            <button name="btn" class="btn btn-success" type="submit">Filters</button>
+                                        </div>
+                                    </form>
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Photo</th>
+                                            <th>Brand</th>
+                                            <th>Cost</th>
+                                            <th>Description</th>
+                                            <th>Quantify</th>
+                                            <th>Manage</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="o1">
+                                            <td>18TBS9</td>
+                                            <td>
+                                                <img src="~/pic/thebodyshop.jpg" />
+                                            </td>
+                                            <td>The Body Shop</td>
+                                            <td>780000</td>
+                                            <td>Những lá trà xanh được chọn lọc tỉ mỉ từ thung lũng dưới chân núi Phú Sĩ, Nhật Bản. Tinh chất trà xanh tinh khiết của chúng tôi được hòa trộn trong sản phẩm tẩy tế bào chết, nhẹ nhàng kích thích da đầu cho cảm giác thật sảng khoái và mái tóc bóng khỏe.</td>
+                                            <td>499</td>
+                                            <td>
+                                                View
+                                                <br>
+                                                Modify
+                                                <br>
+                                                Detele
+                                            </td>
+                                        </tr>
+                                        <tr class="o2">
+                                            <td>CC250</td>
+                                            <td>
+                                                <img src="~/pic/cocoon.jpg" />
+                                            </td>
+                                            <td>CoCoon</td>
+                                            <td>140000</td>
+                                            <td>Công dụng Nước dưỡng tóc tinh dầu bưởi Cocoon (pomelo hair tonic): Giúp tóc giảm gãy rụng và khô xơ, cung cấp dưỡng chất giúp tóc luôn suôn mượt, mềm mại</td>
+                                            <td>250</td>
+                                            <td>
+                                                View
+                                                <br>
+                                                Modify
+                                                <br>
+                                                Detele
+                                            </td>
+                                        </tr>
+                                        <tr class="o3">
+                                            <td>136HL</td>
+                                            <td>
+                                                <img src="~/pic/hoalacomay.jpg" />
+                                            </td>
+                                            <td>Hoa Lá Cỏ May</td>
+                                            <td>400000</td>
+                                            <td>Combo gội xả thảo dược Gừng Dừa Cỏ Cây Hoa Lá với thành phần chính từ các loại thảo dược thiên nhiên như: Gừng tươi, dầu dừa,... kết hợp cùng các thành phần có chiết xuất thực vật nên cực an toàn và lành tính</td>
+                                            <td>300</td>
+                                            <td>
+                                                View
+                                                <br>
+                                                Modify
+                                                <br>
+                                                Detele
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </div>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/js/jquery-1.9.1.min.js"></script>
+    <script src="~/js/jquery-ui-1.10.1.custom.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+</body>
+</html>

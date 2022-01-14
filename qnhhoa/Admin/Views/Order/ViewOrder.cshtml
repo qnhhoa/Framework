@@ -1,0 +1,165 @@
+﻿@{
+    ViewData["Title"] = "Update Order";
+}
+@model Order
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Order</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/theme.css" rel="stylesheet" />
+    <link href="~/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="module span10 offset1">
+                    <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        View
+    </button>-->
+                    <!-- Modal -->
+                    <!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detail</h5>
+                </div>-->
+                    <div class="module-head">
+                        <h3>Order details</h3>
+                    </div>
+                    <div class="modal-body">
+                        <table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered display" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Product</th>
+                                    <th>Cost</th>
+                                    <th>Manage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="o1">
+                                    @foreach (var cthd in ViewBag.data)
+                                    {
+                                        <th>@cthd.MaHD</th>
+                                        <th>@cthd.TenSP</th>
+                                        <th>@cthd.GiaSP</th>
+                                        <th>
+                                            <a href="DeleteCthd?Id=@cthd.MaHD&Ok=@cthd.MaSP" class="btn btn-warning">Delete</a>
+                                        </th>
+                                        <br />
+                                    }
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br />
+                    </div>
+                    @*<div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>*@
+                    <form class="form-vertical" action="/Order/UpdateOrder" method="post">
+                        <div class="module-head">
+                            <h3>Update Order</h3>
+                        </div>
+                        <div class="module-option clearfix">
+                            <div class="media-body">
+                                <table cellpadding="5" style="width: 100%">
+                                    <tr>
+                                        <td for="username" width="10%">Order ID</td>
+                                        <td width="100%">
+                                            <input type="text" class="span3" name="MaHD" value="@Model.MaHD" readonly>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td for="username" width="10%">Username</td>
+                                        <td width="100%">
+                                            <input type="text" class="span3" name="Username" value="@Model.Username" readonly>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10%">Fullname</td>
+                                        <td width="50%">
+                                            <div class="input-append">
+                                                <input type="datetime" class="span3" name="Fullname" value="@Model.Fullname" disabled>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10%">Receive by</td>
+                                        <td width="100%">
+                                            <input type="datetime" class="span3" name="NgayNH" value="@Model.NgayNH">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="20%">Status</td>
+                                        <td width="100%">
+                                            <div class="input-prepend">
+                                                <select class="span3" type="text" name="Trangthai" value="@Model.Trangthai">
+                                                    <option value="@Model.Trangthai">@Model.Trangthai</option>
+                                                    <option>Pickup</option>
+                                                    <option>On process</option>
+                                                    <option>On delivery</option>
+                                                    <option>Delivered</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10%">Address</td>
+                                        <td width="100%">
+                                            <div class="input-prepend">
+                                                <input class="span5" type="text" name="Diachi" value="@Model.Diachi">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10%">Phone number</td>
+                                        <td width="100%">
+                                            <div class="input-prepend">
+                                                <input class="span5" type="text" name="SDT" value="@Model.SDT">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10%">Subtotal</td>
+                                        <td width="100%">
+                                            <div class="input-prepend">
+                                                <input class="span5" type="text" name="tongtien" value="@Model.Tongtien">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10%">Payment</td>
+                                        <td width="100%">
+                                            <div class="input-prepend">
+                                                <select class="span5" type="text" name="phuongthuc">
+                                                    <option value="@Model.Phuongthuc">@Model.Phuongthuc</option>
+                                                    <option>Cash on delivery</option>
+                                                    <option>Momo wallet</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <center>
+                                    <input type="submit" class="btn btn-success" value="Update" style="margin-top: 10px;"> &nbsp;
+                                    <a asp-area="" asp-controller="Order" asp-action="Index" class="btn btn-info" style="margin-top: 10px;">Back</a>
+                                </center>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

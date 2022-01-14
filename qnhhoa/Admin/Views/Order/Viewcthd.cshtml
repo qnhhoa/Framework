@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Admin.Models.Order>;
+@{
+    Layout = null;
+}
+@{
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Order</title>
+        <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/css/theme.css" rel="stylesheet" />
+        <link href="~/css/bootstrap-responsive.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                        <i class="icon-reorder shaded"></i>
+                    </a><a class="brand" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    <div class="nav-collapse collapse navbar-inverse-collapse">
+                        <ul class="nav pull-right">
+                            <li class="nav-user dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    Account &ensp; <i class="fa fa-user" class="nav-avatar"></i>
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Information</a></li>
+                                    <li><a asp-area="" asp-controller="Login" asp-action="Index"> &ensp; Logout</a>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="span3">
+                        <div class="sidebar">
+                            <div class="modal fade" id="MaHD" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="MaHD">Detail</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Order ID</th>
+                                                        <th>Product</th>
+                                                        <th>Subtotal</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var i in Model)
+                                                    {
+                                                        <tr class="o1">
+                                                            <td>@i.MaHD</td>
+                                                            <td>@i.TenSP</td>
+                                                            <td>@i.GiaSP</td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </body>
+</html>
+    }
+

@@ -1,0 +1,143 @@
+﻿@using Admin.Models;
+@{
+    ViewBag.Title = "Search";
+}
+@model IEnumerable<Admin.Models.Makeup>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makeup</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/theme.css" rel="stylesheet" />
+    <link href="~/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
+<body>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                    <i class="icon-reorder shaded"></i>
+                </a><a class="brand" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <div class="nav-collapse collapse navbar-inverse-collapse">
+                    <ul class="nav pull-right">
+                        <li class="nav-user dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Account &ensp; <i class="fa fa-user" class="nav-avatar"></i>
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Information</a></li>
+                                <li><a asp-area="" asp-controller="Login" asp-action="Index"> &ensp; Logout</a>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="span3">
+                    <div class="sidebar">
+                        <ul class="widget widget-menu unstyled">
+                            <li class="active">
+                                <a class="fas fa-ellipsis-h" asp-area="" asp-controller="Home" asp-action="Index"> &ensp; Dashboard</a>
+                            </li>
+                            <li>
+                                <a class="fas fa-dolly" asp-area="" asp-controller="Order" asp-action="Index"> &ensp; Order Management</a>
+                            </li>
+                            <li>
+                                <a class="fas fa-user" asp-area="" asp-controller="User" asp-action="Index"> &ensp; User Management</a>
+                            </li>
+                            <li>
+                                <a class="fas fa-user" asp-area="" asp-controller="Blog" asp-action="Index"> &ensp; Blog Management</a>
+                            </li>
+                            <li>
+                                <a class="fas fa-user" asp-area="" asp-controller="Chart" asp-action="Charts">&ensp; Statistical Charts</a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#sp">
+                                    <i class="fas fa-bars"></i>&ensp; Product Management
+                                </a>
+                                <ul id="sp" class="collapse unstyled">
+                                    <li><a asp-area="" asp-controller="Hair" asp-action="Index"> &ensp; Hair care</a></li>
+                                    <li><a asp-area="" asp-controller="Makeup" asp-action="Index"> &ensp; Makeup</a></li>
+                                    <li><a asp-area="" asp-controller="Skin" asp-action="Index"> &ensp; Skin care</a></li>
+                                    <li><a asp-area="" asp-controller="Body" asp-action="Index"> &ensp; Body care</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="span9">
+                    <div class="content">
+                        <div class="module">
+                            <div class="module-head">
+                                <h3>Details</h3>
+                            </div>
+                            <table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered display" width="100%">
+                                <div class="module-option clearfix">
+                                    <form method="post" action="Makeup/Search">
+                                        <div class="input-append pull-left">
+                                            <a class="btn btn-success" asp-area="" asp-controller="Makeup" asp-action="Index" type="submit">Back</a>
+                                            <br>
+                                        </div>
+                                        <div class="input-append pull-right">
+                                            <a class="btn btn-success" asp-area="" asp-controller="Makeup" asp-action="addMakeup" type="submit">Add +</a>
+                                            <br>
+                                            <br>
+                                            <button name="btn" class="btn btn-success" type="submit">Filters</button>
+                                        </div>
+                                    </form>
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Product name</th>
+                                            <th>Product type</th>
+                                            <th>Brand</th>
+                                            <th>Cost</th>
+                                            <th>Description</th>
+                                            <th>Quantify</th>
+                                            <th>Manage</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr class="o1">
+                                                <td>@item.ID</td>
+                                                <td>@item.Tensp</td>
+                                                <td>@item.Tenloaisp</td>
+                                                <td>@item.Brand</td>
+                                                <td>@item.Cost</td>
+                                                <td>@item.Description</td>
+                                                <td>@item.Qty</td>
+                                                <td>
+                                                    <a href="ViewMakeup?Id=@item.ID" class="btn btn-success" style="margin-bottom: 5px !important;">View</a>
+                                                    <a href="DeleteMakeup?Id=@item.ID" class="btn btn-warning">Delete</a>
+                                                </td>
+                                            </tr>
+
+                                        }
+                                    </tbody>
+                                </div>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/js/jquery-1.9.1.min.js"></script>
+    <script src="~/js/jquery-ui-1.10.1.custom.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+</body>
+</html>
+

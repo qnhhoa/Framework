@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewData["Title"] = "View blog";
+}
+@model Blog
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Blog</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/theme.css" rel="stylesheet" />
+    <link href="~/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="module span9 offset0">
+                    <form class="form-vertical" action="/Blog/UpdateBlog" method="post">
+                        <div class="module-head">
+                            <h3>View Blog</h3>
+                        </div>
+                        <div class="module-option clearfix">
+                            <div class="media-body">
+                                <table cellpadding="3" style="width: 100%">
+                                    <tr>
+                                        <td width="10%">ID</td>
+                                        <td width="100%">
+                                            <input type="text" name="ID" class="span3" value="@Model.ID">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10%">Title</td>
+                                        <td width="100%">
+                                            <input type="text" name="title" class="span3" value="@Model.Title">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10%">Photo</td>
+                                        <td width="100%">
+                                            <input type="text" name="photo" class="span2" value="@Model.Photo">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10%">Author</td>
+                                        <td width="100%">
+                                            <input type="text" name="author" class="span2" value="@Model.Author">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <span>Content</span>
+                                        <br>
+                                        <div class="row-fluid">
+                                            <input type="text" name="Description" class="span8" value="@Model.Content">
+                                        </div>
+
+                                    </tr>
+                                    <tr>
+                                        <td width="10%">Link post</td>
+                                        <td width="100%">
+                                            <input type="text" name="link_post" class="span2" value="@Model.Link_post">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <center>
+                                    <input type="submit" class="btn btn-success" value="Update" style="margin-top: 10px;"> &nbsp;
+                                    <a asp-area="" asp-controller="Blog" asp-action="Index" class="btn btn-info" style="margin-top: 10px;">Back</a>
+                                </center>
+                            </div>
+                        </div>
+                    </form>
+                    <div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
